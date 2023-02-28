@@ -1,12 +1,8 @@
 import { z } from "zod";
 import type { inferRouterOutputs } from "@trpc/server";
 import type  { AppRouter } from "./server/api/root";
-import { type } from "os";
 
-export type RouterOutputs = inferRouterOutputs<AppRouter>;
-export type AllPostsOutputs = RouterOutputs["post"]["all"];
-export type Post = AllPostsOutputs[number];
-
+export type allPostsOutputs = inferRouterOutputs<AppRouter, "post.all">;
 
 
 export const PostType = z.string({

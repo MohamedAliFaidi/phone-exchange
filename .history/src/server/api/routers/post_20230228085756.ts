@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-
 import {
   createTRPCRouter,
   publicProcedure,
@@ -71,20 +70,12 @@ export const postRouter = createTRPCRouter({
         },
       });
     }),
-  toggle: protectedProcedure
-    .input(
-      z.object({
-        id: z.string(),
-        published: z.boolean(),
-      })
-    )
-    .mutation(async ({ ctx, input: { id, published } }) => {
-      return ctx.prisma.post.update({
+    toggle: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      ctx.prisma.post.delete({
         where: {
-          id,
-        },
-        data: {
-          published,
+          id: input,
         },
       });
     }),

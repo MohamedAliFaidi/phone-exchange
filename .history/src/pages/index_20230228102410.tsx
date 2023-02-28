@@ -4,7 +4,6 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
-import { Posts } from "~/components/Posts";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();

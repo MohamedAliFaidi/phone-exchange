@@ -5,7 +5,7 @@ import { type } from "os";
 
 export type RouterOutputs = inferRouterOutputs<AppRouter>;
 export type AllPostsOutputs = RouterOutputs["post"]["all"];
-export type Post = AllPostsOutputs[number];
+export type Post = AllPostsOutputs[0];
 
 
 
