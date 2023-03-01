@@ -13,7 +13,7 @@ export default function Posts({ post }: PostProps) {
 						checked={published}
 					
 					/>
-					<label htmlFor={id} className={`cursor-pointer}`}>
+					<label htmlFor={id} className={`cursor-pointer ${published ? 'line-through' : ''}`}>
 						{content}
 					</label>
 				</div>

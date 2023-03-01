@@ -1,7 +1,7 @@
 import {api} from "~/utils/api";
 import Post from "./Post";
 
-export default function  Posts (){
+export function  Posts (){
     const {data:posts,isLoading,isError}=api.post.all.useQuery()
     if(isLoading){
         return <div>Loading...</div>

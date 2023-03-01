@@ -6,17 +6,14 @@ export default function Posts({ post }: PostProps) {
 
   return (
     <>
-    <div className="flex gap-2 items-center">
-					<input
-						className="cursor-pointer w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-						type="checkbox" name="done" id={id}
-						checked={published}
-					
-					/>
-					<label htmlFor={id} className={`cursor-pointer}`}>
-						{content}
-					</label>
-				</div>
+      <div className="flex items-center justify-center p-4">
+        <label className="relative inline-block w-32">
+          <input className="absolute h-0 w-0 opacity-0" type="checkbox" />
+          <span className="relative inline-block h-8 w-14 rounded-full bg-gray-400 shadow-inner">
+            <span className="focus-within:shadow-outline absolute inset-y-0 left-0 block h-6 w-6 rounded-full bg-white shadow"></span>
+          </span>
+        </label>
+      </div>
       <div className="flex flex-col gap-4 rounded-xl bg-white/10 p-4 text-white">
         <h3 className="text-xl font-bold">{title}</h3>
         <p className="text-l text-center text-white">{content}</p>

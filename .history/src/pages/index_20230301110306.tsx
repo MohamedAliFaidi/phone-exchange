@@ -1,9 +1,10 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
-import CreatePost from "~/components/CreatePost";
 
-import Posts from "~/components/Posts";
+import { api } from "~/utils/api";
+import  Posts  from "~/components/Posts";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -21,9 +22,8 @@ const Home: NextPage = () => {
             <div className="grid grid-cols-1 gap-4 md:gap-8">
               <div className="flex flex-col gap-4 rounded-xl bg-white/10 p-4 text-white">
                 <h3 className="text-xl font-bold">Todos</h3>
-                <Posts />
+                <Posts/>
               </div>
-              <CreatePost />
             </div>
           )}
           <div className="flex flex-col items-center gap-2">

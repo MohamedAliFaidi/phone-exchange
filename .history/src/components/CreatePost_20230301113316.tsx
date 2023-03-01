@@ -15,7 +15,6 @@ export default function CreatePost() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            console.log(newPost);
           }}
           className="flex flex-col gap-4"
         >
