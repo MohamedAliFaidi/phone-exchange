@@ -1,5 +1,4 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { PostType } from "~/types";
 
 export default function CreatePost() {
@@ -16,15 +15,15 @@ export default function CreatePost() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            console.log(newPost);
             const result = PostType.safeParse(newPost);
-            console.log(result);
             if (!result.success) {
-              result.error.issues.forEach((issue) => {
-                toast.error(issue.message);
-              });
+              console.log(result.error);
               return;
             }
             setNewPost({ title: "", content: "", published: false });
+
+            
           }}
           className="flex flex-col gap-4"
         >

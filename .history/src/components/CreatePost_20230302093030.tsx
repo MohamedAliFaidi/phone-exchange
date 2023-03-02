@@ -19,9 +19,9 @@ export default function CreatePost() {
             const result = PostType.safeParse(newPost);
             console.log(result);
             if (!result.success) {
-              result.error.issues.forEach((issue) => {
-                toast.error(issue.message);
-              });
+              console.log( typeof result.error);
+
+              toast.error("invalid post");
               return;
             }
             setNewPost({ title: "", content: "", published: false });

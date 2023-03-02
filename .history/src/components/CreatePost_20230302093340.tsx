@@ -22,6 +22,7 @@ export default function CreatePost() {
               result.error.issues.forEach((issue) => {
                 toast.error(issue.message);
               });
+
               return;
             }
             setNewPost({ title: "", content: "", published: false });
