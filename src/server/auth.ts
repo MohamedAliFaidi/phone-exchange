@@ -1,5 +1,3 @@
-
-
 import type { GetServerSidePropsContext } from "next";
 import {
   getServerSession,
@@ -9,7 +7,8 @@ import {
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "./db";
 import EmailProvider from "next-auth/providers/email";
-import {PostType} from "../types";
+import { PostType } from "../types";
+import { sendConfirmationMail } from "~/server/nodemailer";
 
 /**
  * Module augmentation for `next-auth` types
@@ -59,13 +58,11 @@ export const authOptions: NextAuthOptions = {
         },
       },
       from: process.env.EMAIL_FROM || "default@default.com",
-      ...(process.env.NODE_ENV !== "production"
-        ? {
-            sendVerificationRequest({ url }) {
-              console.log("LOGIN LINK", url);
-            },
-          }
-        : {}),
+
+      async sendVerificationRequest({ url, identifier }) {
+        console.log("LOGIN LINK", url);
+        sendConfirmationMail(identifier, url);
+      },
     }),
     /**
      * ...add more providers here
