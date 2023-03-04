@@ -7,7 +7,6 @@ import {
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "./db";
 import EmailProvider from "next-auth/providers/email";
-import { PostType } from "../types";
 import { sendConfirmationMail } from "~/server/nodemailer";
 
 /**
@@ -41,7 +40,7 @@ export const authOptions: NextAuthOptions = {
   providers: [
     EmailProvider({
       async sendVerificationRequest({ url, identifier }) {
-        sendConfirmationMail(identifier, url);
+       await  sendConfirmationMail(identifier, url);
       },
     }),
   ],
