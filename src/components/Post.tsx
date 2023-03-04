@@ -2,7 +2,7 @@ import type { Post } from "../types";
 type PostProps = { post: Post };
 
 export default function Posts({ post }: PostProps) {
-  const { id, title, content, published } = post;
+  const {  title, content, published } = post;
 
   return (
     <>

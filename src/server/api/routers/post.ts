@@ -3,7 +3,7 @@ import { z } from "zod";
 
 import {
   createTRPCRouter,
-  publicProcedure,
+  
   protectedProcedure,
 } from "~/server/api/trpc";
 import { PostType } from "~/types";
@@ -50,10 +50,10 @@ export const postRouter = createTRPCRouter({
   create: protectedProcedure
     .input(PostType)
     .mutation(async ({ ctx, input }) => {
-      ctx.prisma.post.create({
+      await ctx.prisma.post.create({
         data: {
-          content: input,
-          title: input,
+          content: input.content,
+          title: input.title,
           user: {
             connect: {
               id: ctx.session.user.id,
@@ -65,7 +65,7 @@ export const postRouter = createTRPCRouter({
   delete: protectedProcedure
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
-      ctx.prisma.post.delete({
+      await ctx.prisma.post.delete({
         where: {
           id: input,
         },

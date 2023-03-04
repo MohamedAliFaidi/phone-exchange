@@ -1,5 +1,4 @@
 import nodemailer from "nodemailer";
-import { theme } from "tailwind.config.cjs";
 
 const transport = nodemailer.createTransport({
   host: process.env.HOST,
