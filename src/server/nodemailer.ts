@@ -2,11 +2,11 @@ import nodemailer from "nodemailer";
 import { theme } from "tailwind.config.cjs";
 
 const transport = nodemailer.createTransport({
-  host: "smtp.gmail.com",
+  host: process.env.HOST,
   port: 587,
   secure: false,
   auth: {
-    user:process.env.EMAIL_SERVER_HOST,
+    user:process.env.EMAIL_SERVER,
     pass: process.env.EMAIL_SERVER_PASSWORD,
   },
 });
@@ -22,7 +22,7 @@ const color = {
 };
 export const sendConfirmationMail = (email: string, code: string) => {
   return transport.sendMail({
-    from: "devfaidi2@gmail.com",
+    from: process.env.EMAIL_SERVER,
     to: email,
     subject: "Confirm login",
     text: `Please clicl the link below to access your account`,
