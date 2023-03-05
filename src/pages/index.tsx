@@ -11,8 +11,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Full stack todo app</title>
-        <meta name="description" content="Full stack todo app" />
+        <title>Phone-Exchange</title>
+        <meta name="description" content="Phone-Exchange" />
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#0f1235] to-[#090920]">
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
           {sessionData && (
             <div className="grid grid-cols-1 gap-4 md:gap-8">
               <div className="flex flex-col gap-4 rounded-xl bg-white/10 p-4 text-white">
-                <h3 className="text-xl font-bold">Todos</h3>
+                <h3 className="text-xl font-bold">Posts</h3>
                 <Posts />
               </div>
               <CreatePost />
