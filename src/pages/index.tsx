@@ -1,11 +1,10 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
-import CreatePost from "~/components/posts/CreatePost";
 
-import Posts from "~/components/posts/Posts";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -53,18 +52,16 @@ const Home: NextPage = () => {
         <meta name="description" content="Phone-Exchange" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <main
-       
-      >
+      <main>
         <div>
           <nav className="container mx-auto px-5 py-5 md:flex md:items-center md:justify-between">
             <div className="flex items-center justify-between">
-              <a
+              <Link
                 className="text-xl font-bold text-gray-800 hover:text-blue-400 md:text-2xl"
                 href="/home"
               >
                 Logo
-              </a>
+              </Link>
               <div className="flex md:hidden">
                 <button
                   onClick={() => {
@@ -98,21 +95,24 @@ const Home: NextPage = () => {
                   : "display-overflow mt-8 hidden flex-col space-y-4 md:mt-0 md:flex md:flex-row md:items-center md:space-y-0 md:space-x-10"
               }
             >
-              <a className="text-gray-800 hover:text-blue-400" href="/">
+              <Link className="text-gray-800 hover:text-blue-400" href="/">
                 Home
-              </a>
+              </Link>
               <Link
                 className="text-gray-800 hover:text-blue-400"
                 href="/Market"
               >
                 Marketplace
               </Link>
-              <a className="text-gray-800 hover:text-blue-400" href="/contact">
+              <Link
+                className="text-gray-800 hover:text-blue-400"
+                href="/contact"
+              >
                 Contact US
-              </a>
-              <a className="text-gray-800 hover:text-blue-400" href="/about">
+              </Link>
+              <Link className="text-gray-800 hover:text-blue-400" href="/about">
                 About Us
-              </a>
+              </Link>
 
               {/* <form className="flex items-center space-x-2 rounded-full border-2 border-blue-600 p-2">
                   <svg
@@ -161,26 +161,38 @@ const Home: NextPage = () => {
               Explore
             </p>
             <div className="fade-in flex w-full justify-center pb-24 md:justify-start lg:pb-0">
-              <img
+              <Image
+                width={100}
+                height={100}
                 src="App Store.svg"
                 className="bounce-top-icons h-12 pr-4"
-              ></img>
-              <img src="Play Store.svg" className="bounce-top-icons h-12"></img>
+                alt={""}
+              ></Image>
+              <Image
+                height={100}
+                width={100}
+                src="Play Store.svg"
+                className="bounce-top-icons h-12"
+                alt={""}
+              ></Image>
             </div>
           </div>
           <div className="w-full overflow-y-hidden py-6 xl:w-3/5">
-            <img
+            <Image
+              height={100}
+              width={100}
               className="slide-in-bottom mx-auto w-5/6 lg:mr-0"
               src="devices.svg"
-            ></img>
+              alt={""}
+            ></Image>
           </div>
           <div className="fade-in w-full pt-16 pb-6 text-center text-sm md:text-left">
-            <a
+            <Link
               className="text-gray-500 no-underline hover:no-underline"
               href="#"
             >
               &copy; Phone-Exchange 2023
-            </a>
+            </Link>
           </div>
         </div>
       </main>

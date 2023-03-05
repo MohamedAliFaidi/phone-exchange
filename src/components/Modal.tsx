@@ -1,12 +1,23 @@
 import router from "next/router";
+import type { Dispatch, SetStateAction } from "react";
+import { useCallback } from "react";
 
 const Modal = ({
   showModal,
   setShowModal,
 }: {
   showModal: boolean;
-  setShowModal: (showModal: boolean) => void;
+  setShowModal:  Dispatch<SetStateAction<boolean>>;
 }) => {
+
+  const closeModal =useCallback (async () => {
+    setShowModal(false);
+    await router.push("/");
+    return;
+  },[setShowModal])
+
+
+
   return (
     <>
       <div
@@ -20,10 +31,7 @@ const Modal = ({
               <div className="rounded-lg bg-white p-6">
                 <button
                   className="rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
-                  onClick={() => {
-                    setShowModal(false);
-                    router.push("/");
-                  }}
+                  onClick={()=> void closeModal()}
                 ></button>
                 <h2 className="mb-4 text-lg font-medium">Modal title</h2>
                 <p className="mb-4">Modal content goes here</p>
