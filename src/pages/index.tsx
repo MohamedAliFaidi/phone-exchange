@@ -57,73 +57,61 @@ const Home: NextPage = () => {
         style={{ backgroundImage: "url('/bg.svg')" }}
       >
         <div>
-          <div>
-            <nav className="container mx-auto px-6 py-8 md:flex md:items-center md:justify-between">
-              <div className="flex items-center justify-between">
-                <a
-                  className="text-xl font-bold text-gray-800 hover:text-blue-400 md:text-2xl"
-                  href="/home"
-                >
-                  Logo
-                </a>
-                <div className="flex md:hidden">
-                  <button
-                    onClick={() => {
-                      setShowMenu(!showMenu);
-                    }}
-                    type="button"
-                    className="text-gray-800 hover:text-gray-400 focus:text-gray-400 focus:outline-none"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      className="h-6 w-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <div
-                aria-hidden={showMenu}
-                className={showMenu ?  "flex mt-8 flex-col space-y-4 md:mt-0 md:flex md:flex-row md:items-center md:space-y-0 md:space-x-10 display-overflow" :"hidden mt-8 flex-col space-y-4 md:mt-0 md:flex md:flex-row md:items-center md:space-y-0 md:space-x-10 display-overflow"}
-          
+          <nav className="container mx-auto px-5 py-5 md:flex md:items-center md:justify-between">
+            <div className="flex items-center justify-between">
+              <a
+                className="text-xl font-bold text-gray-800 hover:text-blue-400 md:text-2xl"
+                href="/home"
               >
-               
-                    <a
-                      className="text-gray-800 hover:text-blue-400"
-                      href="/home"
-                    >
-                      Home
-                    </a>
-                    <a
-                      className="text-gray-800 hover:text-blue-400"
-                      href="/blog"
-                    >
-                      Blogs
-                    </a>
-                    <a
-                      className="text-gray-800 hover:text-blue-400"
-                      href="/contact"
-                    >
-                      Contact US
-                    </a>
-                    <a
-                      className="text-gray-800 hover:text-blue-400"
-                      href="/about"
-                    >
-                      About Us
-                    </a>
-             
+                Logo
+              </a>
+              <div className="flex md:hidden">
+                <button
+                  onClick={() => {
+                    setShowMenu(!showMenu);
+                  }}
+                  type="button"
+                  className="text-gray-800 hover:text-gray-400 focus:text-gray-400 focus:outline-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div
+              aria-hidden={showMenu}
+              className={
+                showMenu
+                  ? "display-overflow mt-8 flex flex-col space-y-4 md:mt-0 md:flex md:flex-row md:items-center md:space-y-0 md:space-x-10"
+                  : "display-overflow mt-8 hidden flex-col space-y-4 md:mt-0 md:flex md:flex-row md:items-center md:space-y-0 md:space-x-10"
+              }
+            >
+              <a className="text-gray-800 hover:text-blue-400" href="/home">
+                Home
+              </a>
+              <a className="text-gray-800 hover:text-blue-400" href="/blog">
+                Blogs
+              </a>
+              <a className="text-gray-800 hover:text-blue-400" href="/contact">
+                Contact US
+              </a>
+              <a className="text-gray-800 hover:text-blue-400" href="/about">
+                About Us
+              </a>
 
-                <form className="flex items-center space-x-2 rounded-full border-2 border-blue-600 p-2">
+              {/* <form className="flex items-center space-x-2 rounded-full border-2 border-blue-600 p-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -144,14 +132,22 @@ const Home: NextPage = () => {
                     type="text"
                     placeholder="Search"
                   />
-                </form>
-              </div>
-            </nav>
-          </div>
+                </form> */}
+              <button
+                className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+                onClick={
+                  sessionData ? () => void signOut() : () => void signIn()
+                }
+              >
+                {sessionData ? "Sign out" : "Sign in"}
+              </button>
+            </div>
+          </nav>
         </div>
-
         <div className="container mx-auto flex flex-col flex-wrap items-center px-6 pt-24 md:flex-row md:pt-48">
+          
           <div className="flex w-full flex-col justify-center overflow-y-hidden lg:items-start xl:w-2/5">
+            
             <h1 className="slide-in-bottom-h1 my-4 text-center text-3xl font-bold leading-tight text-purple-800 md:text-left md:text-5xl">
               Main Hero Message to sell your app
             </h1>

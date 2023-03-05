@@ -19,13 +19,9 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
-      
     } & DefaultSession["user"];
   }
-
-
 }
-
 
 export const authOptions: NextAuthOptions = {
   callbacks: {
@@ -40,13 +36,17 @@ export const authOptions: NextAuthOptions = {
   providers: [
     EmailProvider({
       async sendVerificationRequest({ url, identifier }) {
-       await  sendConfirmationMail(identifier, url);
+        await sendConfirmationMail(identifier, url);
       },
     }),
   ],
+  pages: {
+    
+    error: "/auth/error", // Error code passed in query string as ?error=
+    verifyRequest: "/auth/verify-request", // (used for check email message)
+    newUser: "/auth/new-user", // New users will be directed here on first sign in (leave the property out if not of interest)
+  },
 };
-
-
 
 export const getServerAuthSession = (ctx: {
   req: GetServerSidePropsContext["req"];
