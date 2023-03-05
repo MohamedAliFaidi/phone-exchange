@@ -5,7 +5,7 @@ const Modal = ({
   setShowModal,
 }: {
   showModal: boolean;
-  setShowModal: Function;
+  setShowModal: (showModal: boolean) => void;
 }) => {
   return (
     <>
