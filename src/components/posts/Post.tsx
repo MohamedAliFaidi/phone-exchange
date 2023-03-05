@@ -1,4 +1,4 @@
-import type { Post } from "../types";
+import type { Post } from "../../types";
 type PostProps = { post: Post };
 
 export default function Posts({ post }: PostProps) {

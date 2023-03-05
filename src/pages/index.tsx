@@ -1,16 +1,18 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
-import CreatePost from "~/components/CreatePost";
+import CreatePost from "~/components/posts/CreatePost";
 
-import Posts from "~/components/Posts";
+import Posts from "~/components/posts/Posts";
+import { useState } from "react";
 
 const Home: NextPage = () => {
+  const [showMenu, setShowMenu] = useState(false);
   const { data: sessionData } = useSession();
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Phone-Exchange</title>
         <meta name="description" content="Phone-Exchange" />
         <link rel="icon" href="/favicon.png" />
@@ -42,6 +44,148 @@ const Home: NextPage = () => {
                 {sessionData ? "Sign out" : "Sign in"}
               </button>
             </div>
+          </div>
+        </div>
+      </main> */}
+      <Head>
+        <title>Phone-Exchange</title>
+        <meta name="description" content="Phone-Exchange" />
+        <link rel="icon" href="/favicon.png" />
+      </Head>
+      <main
+        className="h-screen bg-cover bg-right  pb-14 leading-normal tracking-normal text-gray-900"
+        style={{ backgroundImage: "url('/bg.svg')" }}
+      >
+        <div>
+          <div>
+            <nav className="container mx-auto px-6 py-8 md:flex md:items-center md:justify-between">
+              <div className="flex items-center justify-between">
+                <a
+                  className="text-xl font-bold text-gray-800 hover:text-blue-400 md:text-2xl"
+                  href="/home"
+                >
+                  Logo
+                </a>
+                <div className="flex md:hidden">
+                  <button
+                    onClick={() => {
+                      setShowMenu(!showMenu);
+                    }}
+                    type="button"
+                    className="text-gray-800 hover:text-gray-400 focus:text-gray-400 focus:outline-none"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="h-6 w-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div
+                aria-hidden={showMenu}
+                className={showMenu ?  "flex mt-8 flex-col space-y-4 md:mt-0 md:flex md:flex-row md:items-center md:space-y-0 md:space-x-10 display-overflow" :"hidden mt-8 flex-col space-y-4 md:mt-0 md:flex md:flex-row md:items-center md:space-y-0 md:space-x-10 display-overflow"}
+          
+              >
+               
+                    <a
+                      className="text-gray-800 hover:text-blue-400"
+                      href="/home"
+                    >
+                      Home
+                    </a>
+                    <a
+                      className="text-gray-800 hover:text-blue-400"
+                      href="/blog"
+                    >
+                      Blogs
+                    </a>
+                    <a
+                      className="text-gray-800 hover:text-blue-400"
+                      href="/contact"
+                    >
+                      Contact US
+                    </a>
+                    <a
+                      className="text-gray-800 hover:text-blue-400"
+                      href="/about"
+                    >
+                      About Us
+                    </a>
+             
+
+                <form className="flex items-center space-x-2 rounded-full border-2 border-blue-600 p-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="h-6 w-6 text-gray-800"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                    />
+                  </svg>
+
+                  <input
+                    className="w-full text-gray-800 placeholder-gray-800 outline-none"
+                    type="text"
+                    placeholder="Search"
+                  />
+                </form>
+              </div>
+            </nav>
+          </div>
+        </div>
+
+        <div className="container mx-auto flex flex-col flex-wrap items-center px-6 pt-24 md:flex-row md:pt-48">
+          <div className="flex w-full flex-col justify-center overflow-y-hidden lg:items-start xl:w-2/5">
+            <h1 className="slide-in-bottom-h1 my-4 text-center text-3xl font-bold leading-tight text-purple-800 md:text-left md:text-5xl">
+              Main Hero Message to sell your app
+            </h1>
+            <p className="slide-in-bottom-subtitle mb-8 text-center text-base leading-normal md:text-left md:text-2xl">
+              Sub-hero message, not too long and not too short. Make it just
+              right!
+            </p>
+
+            <p className="fade-in pb-8 text-center font-bold text-blue-400 md:text-left lg:pb-6">
+              Explore
+            </p>
+            <div className="fade-in flex w-full justify-center pb-24 md:justify-start lg:pb-0">
+              <img
+                src="App Store.svg"
+                className="bounce-top-icons h-12 pr-4"
+              ></img>
+              <img src="Play Store.svg" className="bounce-top-icons h-12"></img>
+            </div>
+          </div>
+
+          <div className="w-full overflow-y-hidden py-6 xl:w-3/5">
+            <img
+              className="slide-in-bottom mx-auto w-5/6 lg:mr-0"
+              src="devices.svg"
+            ></img>
+          </div>
+
+          <div className="fade-in w-full pt-16 pb-6 text-center text-sm md:text-left">
+            <a
+              className="text-gray-500 no-underline hover:no-underline"
+              href="#"
+            >
+              &copy; Phone-Exchange 2023
+            </a>
           </div>
         </div>
       </main>
