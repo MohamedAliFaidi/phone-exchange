@@ -13,8 +13,13 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
-      <Toaster/>
+      <main
+        className="h-screen bg-cover bg-right  pb-14 leading-normal tracking-normal text-gray-900"
+        style={{ backgroundImage: "url('/bg.svg')" }}
+      >
+        <Component {...pageProps} />
+      </main>
+      <Toaster />
     </SessionProvider>
   );
 };

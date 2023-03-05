@@ -5,6 +5,7 @@ import CreatePost from "~/components/posts/CreatePost";
 
 import Posts from "~/components/posts/Posts";
 import { useState } from "react";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -53,8 +54,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main
-        className="h-screen bg-cover bg-right  pb-14 leading-normal tracking-normal text-gray-900"
-        style={{ backgroundImage: "url('/bg.svg')" }}
+       
       >
         <div>
           <nav className="container mx-auto px-5 py-5 md:flex md:items-center md:justify-between">
@@ -98,12 +98,15 @@ const Home: NextPage = () => {
                   : "display-overflow mt-8 hidden flex-col space-y-4 md:mt-0 md:flex md:flex-row md:items-center md:space-y-0 md:space-x-10"
               }
             >
-              <a className="text-gray-800 hover:text-blue-400" href="/home">
+              <a className="text-gray-800 hover:text-blue-400" href="/">
                 Home
               </a>
-              <a className="text-gray-800 hover:text-blue-400" href="/blog">
-                Blogs
-              </a>
+              <Link
+                className="text-gray-800 hover:text-blue-400"
+                href="/Market"
+              >
+                Marketplace
+              </Link>
               <a className="text-gray-800 hover:text-blue-400" href="/contact">
                 Contact US
               </a>
@@ -145,9 +148,7 @@ const Home: NextPage = () => {
           </nav>
         </div>
         <div className="container mx-auto flex flex-col flex-wrap items-center px-6 pt-24 md:flex-row md:pt-48">
-          
           <div className="flex w-full flex-col justify-center overflow-y-hidden lg:items-start xl:w-2/5">
-            
             <h1 className="slide-in-bottom-h1 my-4 text-center text-3xl font-bold leading-tight text-purple-800 md:text-left md:text-5xl">
               Main Hero Message to sell your app
             </h1>
@@ -167,14 +168,12 @@ const Home: NextPage = () => {
               <img src="Play Store.svg" className="bounce-top-icons h-12"></img>
             </div>
           </div>
-
           <div className="w-full overflow-y-hidden py-6 xl:w-3/5">
             <img
               className="slide-in-bottom mx-auto w-5/6 lg:mr-0"
               src="devices.svg"
             ></img>
           </div>
-
           <div className="fade-in w-full pt-16 pb-6 text-center text-sm md:text-left">
             <a
               className="text-gray-500 no-underline hover:no-underline"
