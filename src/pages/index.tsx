@@ -51,6 +51,11 @@ const Home: NextPage = () => {
         <title>Phone-Exchange</title>
         <meta name="description" content="Phone-Exchange" />
         <link rel="icon" href="/favicon.png" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8425973864910669"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
       <main>
         <div>
