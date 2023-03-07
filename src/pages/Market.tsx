@@ -6,7 +6,7 @@ const PostsPage = () => {
   const { data: sessionData } = useSession();
   return (
     <>
-    <head>
+      <head>
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8425973864910669"
